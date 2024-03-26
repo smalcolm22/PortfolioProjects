@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'}
+    span.s1 {font: 12.0px Helvetica}
+  </style>
+</head>
+<body>
+<p class="p1">console.log('Is this working?');</p>
+<p class="p2"><br></p>
+<p class="p1">let viz;</p>
+<p class="p2"><br></p>
+<p class="p1">//Add Share Link to Tableau Public in here</p>
+<p class="p3"><span class="s1">const url = "</span>https://public.tableau.com/app/profile/sabrina.malcolm/viz/CovidDashboard_17114113645540/Dashboard1?publish=yes<span class="s1">";</span></p>
+<p class="p2"><br></p>
+<p class="p1">const vizContainer = document.getElementById('vizContainer');</p>
+<p class="p1">const options = {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>hideTabs: true,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 1000,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 1200,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>onFirstInteraction: function() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>workbook = viz.getWorkbook();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>activeSheet = workbook.getActiveSheet();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>console.log("My dashboard is interactive");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1">};</p>
+<p class="p2"><br></p>
+<p class="p1">//create a function to generate the viz element</p>
+<p class="p1">function initViz() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>console.log('Executing the initViz function!');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>viz = new tableau.Viz(vizContainer, url, options);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// run the initViz function when the page loads</p>
+<p class="p1">document.addEventListener("DOMContentLoaded", initViz);</p>
+<p class="p2"><br></p>
+<p class="p1">const exportPDF = document.getElementById('exportPDF');</p>
+<p class="p1">const exportImage = document.getElementById('exportImage');</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1">//click on the pdf button to generate pdf of dashboard</p>
+<p class="p1">function generatePDF() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>viz.showExportPDFDialog()</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">exportPDF.addEventListener("click", function () {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>generatePDF();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1">//click on image to generate image of dashboard</p>
+<p class="p1">function generateImage() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>viz.showExportImageDialog()</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">exportImage.addEventListener("click", function () {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>generateImage();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+</body>
+</html>
